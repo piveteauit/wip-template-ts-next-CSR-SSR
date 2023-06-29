@@ -8,6 +8,9 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
+    "plugins": [
+      { "name": "typescript-tslint-plugin" }
+    ],
     "lib": [
       "dom",
       "dom.iterable",

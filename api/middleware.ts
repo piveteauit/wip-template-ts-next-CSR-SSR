@@ -1,5 +1,5 @@
-import bodyParser from 'body-parser';
-import path from 'path';
+import bodyParser from "body-parser";
+import path from "path";
 
 class Middleware {
   express: any;
@@ -18,8 +18,6 @@ class Middleware {
 
   initErrors() {
     this.express.use(async (err: any, req: any, res: any, next: any) => {
-      /* This will be the first error handler to be called */
-      console.error('Unexpected error');
       return next(err);
     });
   }

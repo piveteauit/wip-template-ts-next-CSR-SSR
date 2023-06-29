@@ -1,5 +1,5 @@
-import React from 'react';
-import Layout from '../view/layout';
+import React from "react";
+import Layout from "../view/layout";
 
 export default function Main(props: any) {
   return (
@@ -11,7 +11,7 @@ export default function Main(props: any) {
         cases of this setup.
       </p>
       <p>
-        It is rendered on the root via a custom{' '}
+        It is rendered on the root via a custom{" "}
         <a
           target="_blank"
           href="https://github.com/alexey-dc/nextjs_express_template/blob/main/app/routes/pages.js#L39"
@@ -20,26 +20,26 @@ export default function Main(props: any) {
         </a>
         .
       </p>
-      <div style={{ marginBottom: '4vh' }} />
+      <div style={{ marginBottom: "4vh" }} />
       <ul className="large_li">
         <li>
-          {' '}
-          <a href="/preload_data"> Preloading data into pages </a>{' '}
+          {" "}
+          <a href="/preload_data"> Preloading data into pages </a>{" "}
         </li>
         <li>
-          {' '}
-          <a href="/load_data_via_api"> Loading data after page load </a>{' '}
+          {" "}
+          <a href="/load_data_via_api"> Loading data after page load </a>{" "}
         </li>
         <li>
-          {' '}
-          <a href="/large_or_small/5"> Special routing </a>{' '}
+          {" "}
+          <a href="/large_or_small/5"> Special routing </a>{" "}
         </li>
         <li>
-          {' '}
+          {" "}
           <a href="/nextjs_default_routing">
-            {' '}
-            Default/fallback NextJS routing{' '}
-          </a>{' '}
+            {" "}
+            Default/fallback NextJS routing{" "}
+          </a>{" "}
         </li>
       </ul>
     </Layout>

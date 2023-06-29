@@ -1,11 +1,11 @@
-import React from 'react';
-import Head from 'next/head';
+import React from "react";
+import Head from "next/head";
 
 const renderBack = (backPath: any) => {
   return (
-    <a style={{ position: 'fixed', fontSize: '3vh' }} href={backPath}>
-      {' '}
-      Back{' '}
+    <a style={{ position: "fixed", fontSize: "3vh" }} href={backPath}>
+      {" "}
+      Back{" "}
     </a>
   );
 };
@@ -23,12 +23,12 @@ export default function Layout(props: any) {
           content="width=device-width, initial-scale=1, maximum-scale=1"
         />
       </Head>
-      {props.backPath ? renderBack(props.backPath) : ''}
+      {props.backPath ? renderBack(props.backPath) : ""}
       <div
         style={{
-          marginLeft: '20%',
-          marginRight: '20%',
-          paddingTop: '16px',
+          marginLeft: "20%",
+          marginRight: "20%",
+          paddingTop: "16px",
         }}
       >
         {props.children}

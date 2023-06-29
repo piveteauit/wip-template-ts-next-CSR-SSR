@@ -1,5 +1,5 @@
-import apiRoutes from './routes/api';
-import pagesRoutes from './routes/pages';
+import apiRoutes from "./routes/api";
+import pagesRoutes from "./routes/pages";
 
 class ApiRouter {
   express: any;
@@ -27,7 +27,7 @@ class ApiRouter {
   initErrors() {
     // catch 404 and forward to error handler
     this.express.use((req: any, res: any, next: any) => {
-      const err: any = new Error('Not Found');
+      const err: any = new Error("Not Found");
       err.status = 404;
       next(err);
     });
@@ -36,7 +36,7 @@ class ApiRouter {
       res.status(err.status || 500);
       res.locals.error = err;
       res.locals.errorDescription = err.message;
-      this.next.render(req, res, '/_error', {});
+      this.next.render(req, res, "/_error", {});
     });
   }
 }

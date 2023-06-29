@@ -1,7 +1,7 @@
-import express from 'express';
-import next from 'next';
-import ApiRouter from './apirouter';
-import Middleware from './middleware';
+import express from "express";
+import next from "next";
+import ApiRouter from "./apirouter";
+import Middleware from "./middleware";
 
 class Server {
   port: any;
@@ -14,7 +14,7 @@ class Server {
   constructor(port: any) {
     this.port = port;
     this.express = express();
-    this.next = next({ dev: process.env.NODE_ENV !== 'production' });
+    this.next = next({ dev: process.env.NODE_ENV !== "production" });
     this.middleware = new Middleware(this.express);
     this.router = new ApiRouter(this.express, this.next);
   }
