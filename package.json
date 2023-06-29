@@ -8,7 +8,7 @@
     "build:server": "tsc --project tsconfig.server.json",
     "build:next": "next build .",
     "build": "npm run build:next && npm run build:server",
-    "lint": "tslint --project tsconfig.server.json",
+    "lint": "lint-staged",
     "prettier": "prettier --write ./**/*.{ts,tsx}",
     "precommit": "lint-staged",
     "start": "NODE_ENV=production node dist/index.js",
@@ -17,8 +17,7 @@
   "lint-staged": {
     "*.ts": [
       "tslint --fix",
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ]
   },
   "keywords": [],
