@@ -1,18 +1,15 @@
 const users = [
-    { id: 1, name: "John" },
-    { id: 2, name: "Doe" },
-    { id: 3, name: "Daaaa" },
-];
+  { id: 1, name: "John" },
+  { id: 2, name: "Doe" },
+  { id: 3, name: "Daaaa" },
+]
 
 const controllers = {
-    users: {
-        getAll(req: any, res: any, next: any) {
-            return res.status(200).json(users)
-        }
-    }
-
+  users: {
+    getAll(req: any, res: any, next: any) {
+      return res.status(200).json(users)
+    },
+  },
 }
 
-export {
-    controllers
-}
+export { controllers }

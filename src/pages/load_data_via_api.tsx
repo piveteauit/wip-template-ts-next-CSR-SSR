@@ -1,22 +1,22 @@
-import React from "react";
-import Layout from "../view/layout";
-import Button from "../view/button";
+import React from "react"
+import Layout from "../view/layout"
+import Button from "../view/button"
 
 const LoadDataViaApi = (props: any) => {
-  const [value, setValue] = React.useState(null);
+  const [value, setValue] = React.useState(null)
   const increment = React.useCallback(async () => {
-    const response = await fetch("/api/increment", { method: "POST" });
-    const json = await response.json();
-    setValue(json.i);
-  }, []);
+    const response = await fetch("/api/increment", { method: "POST" })
+    const json = await response.json()
+    setValue(json.i)
+  }, [])
   React.useEffect(() => {
     // Timeout to showcase loading state
     setTimeout(async () => {
-      const response = await fetch("/api/get", { method: "GET" });
-      const json = await response.json();
-      setValue(json.i);
-    }, 2000);
-  }, []);
+      const response = await fetch("/api/get", { method: "GET" })
+      const json = await response.json()
+      setValue(json.i)
+    }, 2000)
+  }, [])
 
   return (
     <Layout title={"CSR Preloaded data"}>
@@ -34,7 +34,7 @@ const LoadDataViaApi = (props: any) => {
       <div style={{ marginBottom: "2vh" }} />
       <a href="/"> Back </a>
     </Layout>
-  );
-};
+  )
+}
 
-export default LoadDataViaApi;
+export default LoadDataViaApi

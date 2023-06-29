@@ -1,22 +1,22 @@
-import React from "react";
-import Layout from "../view/layout";
-import Button from "../view/button";
+import React from "react"
+import Layout from "../view/layout"
+import Button from "../view/button"
 
 export async function getServerSideProps({ req, res }: any) {
   return {
     props: {
       value: parseInt(res.pageParams.value, 10),
     },
-  };
+  }
 }
 
 const PreloadData = (props: any) => {
-  const [value, setValue] = React.useState(props.value);
+  const [value, setValue] = React.useState(props.value)
   const increment = React.useCallback(async () => {
-    const response = await fetch("/api/increment", { method: "POST" });
-    const json = await response.json();
-    setValue(json.i);
-  }, []);
+    const response = await fetch("/api/increment", { method: "POST" })
+    const json = await response.json()
+    setValue(json.i)
+  }, [])
   return (
     <Layout title={"SSR Preloaded data"}>
       <h2>SSR Preloaded data</h2>
@@ -35,7 +35,7 @@ const PreloadData = (props: any) => {
       <div style={{ marginBottom: "2vh" }} />
       <a href="/"> Back </a>
     </Layout>
-  );
-};
+  )
+}
 
-export default PreloadData;
+export default PreloadData

@@ -1,3 +1,3 @@
 module.exports = {
-    distDir: "./dist/src"
-};
+  distDir: "./dist/src",
+}

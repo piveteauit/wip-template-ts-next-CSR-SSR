@@ -1,5 +1,5 @@
-import React from "react";
-import Layout from "../view/layout";
+import React from "react"
+import Layout from "../view/layout"
 
 export default function Main(props: any) {
   return (
@@ -18,5 +18,6 @@ export default function Main(props: any) {
         </li>
       </ul>
     </Layout>
-  );
+  )
 }
+

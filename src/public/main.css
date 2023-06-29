@@ -35,7 +35,7 @@ ul {
   flex-direction: column;
 }
 ul li::before {
-  content: '';
+  content: "";
   display: inline-block;
   vertical-align: middle;
   margin: -0.3vmin 0.5vmin 0 0;
