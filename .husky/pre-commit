@@ -1,4 +1,20 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-npx npm run precommit
+declare API_CHECK=$(git show --name-only -r --stat --oneline HEAD^..HEAD | grep 'api/') 
+declare CLIENT_CHECK=$(git show --name-only -r --stat --oneline HEAD^..HEAD | grep 'src/')
+
+if [[API_CHECK && CLIENT_CHECK]]; then
+    npx npm run precommit
+    exit 0
+fi
+
+if [[API_CHECK]]; then 
+    npx npm run precommit:api
+    exit 0
+fi
+
+if [[CLIENT_CHECK]]; then
+    npx npm run precommit:client
+    exit 0
+fi

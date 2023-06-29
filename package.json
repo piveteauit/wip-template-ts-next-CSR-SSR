@@ -6,16 +6,33 @@
   "scripts": {
     "dev": "NODE_ENV=dev nodemon",
     "start": "NODE_ENV=production node dist/index.js",
-    "prebuild:server": "tsc --project ./api/tsconfig.json --noEmit",
-    "build:server": "tsc --project ./api/tsconfig.json",
-    "prebuild:next": "next build .",
-    "build:next": "next build .",
-    "prebuild": "npm run prebuild:next && npm run prebuild:server && npm run clear:build",
-    "build": "npm run build:next && npm run build:server",
     "clear:build": "rm -rf dist",
     "lint": "next lint",
-    "prettier": "prettier --write ./**/*.{ts,tsx}",
+    
+    
+    "build:api": "tsc --project ./api/tsconfig.json",
+    "build:client": "next build .",
+    "build": "npm run build:client && npm run build:api",
+    
+    
+    "prebuild:api": "tsc --project ./api/tsconfig.json --noEmit && npm run clear:build",
+    "prebuild:client": "next build . && npm run clear:build",
+    
+    "prebuild": "npm run prebuild:next && npm run prebuild:server && npm run clear:build",
+    
+
+    "prettier": "npm run prettier:api && npm run prettier:next",
+    "prettier:api": "prettier --write ./api/**/*.{ts,tsx}",
+    "prettier:next": "prettier --write ./src/**/*.{ts,tsx}",
+    
+    
     "precommit": "npm run prettier && npm run prebuild",
+
+    "precommit:api": "npm run prettier:api && npm run prebuild:api",
+    "precommit:client": "npm run prettier:client && npm run prebuild:client",
+
+    
+    
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
