@@ -10,16 +10,10 @@ export default function Main(props: any) {
       <div style={{ marginBottom: "4vh" }} />
       <ul className="large_li">
         <li>
-          <Link href="/preload_data"> Preloaded SSR </Link>{" "}
+          <Link href="/load_data_via_api"> Mixed CSR </Link>{" "}
         </li>
         <li>
-          {" "}
-          <Link href="/load_data_via_api"> Mixed CSR </Link>{" "}
           <Link href="/preload_data"> Preloaded SSR </Link>{" "}
-        </li>
-        <li>
-          {" "}
-          <Link href="/load_data_via_api"> Mixed CSR </Link>{" "}
         </li>
       </ul>
     </Layout>
