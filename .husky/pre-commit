@@ -1,8 +1,8 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-declare API_CHECK=$(git show --name-only -r --stat --oneline HEAD^..HEAD | grep 'api/') 
-declare CLIENT_CHECK=$(git show --name-only -r --stat --oneline HEAD^..HEAD | grep 'src/')
+declare API_CHECK=$(git diff HEAD~ --name-only | grep 'api/') 
+declare CLIENT_CHECK=$(git diff HEAD~ --name-only | grep 'src/')
 
 if $API_CHECK && $CLIENT_CHECK
 then
