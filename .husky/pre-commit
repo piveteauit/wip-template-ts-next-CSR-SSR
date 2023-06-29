@@ -6,18 +6,21 @@ declare CLIENT_CHECK=$(git diff HEAD~ --name-only | grep 'src/')
 
 if $API_CHECK && $CLIENT_CHECK
 then
+    echo 'Lint / Pretty / Build client & api'
     npx npm run precommit
     exit 0
 fi
 
 if $API_CHECK
-then 
+then
+    echo 'Lint / Pretty / Build api' 
     npx npm run precommit:api
     exit 0
 fi
 
 if $CLIENT_CHECK
 then
+    echo 'Lint / Pretty / Build client'
     npx npm run precommit:client
     exit 0
 fi
