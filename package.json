@@ -18,12 +18,12 @@
     "prebuild:api": "tsc --project ./api/tsconfig.json --noEmit && npm run clear:build",
     "prebuild:client": "next build . && npm run clear:build",
     
-    "prebuild": "npm run prebuild:next && npm run prebuild:server && npm run clear:build",
+    "prebuild": "npm run prebuild:client && npm run prebuild:api && npm run clear:build",
     
 
-    "prettier": "npm run prettier:api && npm run prettier:next",
-    "prettier:api": "prettier --write ./api/**/*.{ts,tsx}",
-    "prettier:next": "prettier --write ./src/**/*.{ts,tsx}",
+    "prettier": "npm run prettier:api && npm run prettier:client",
+    "prettier:api": "prettier --write ./api/* ",
+    "prettier:client": "prettier --write ./src/*",
     
     
     "precommit": "npm run prettier && npm run prebuild",
