@@ -14,7 +14,11 @@ export default function Layout(props: any) {
   return (
     <div>
       <Head>
-        {props?.title ? <title>{props?.title}</title> : <title>"RPI CSR / SSR !"</title>} 
+        {props?.title ? (
+          <title>{props?.title}</title>
+        ) : (
+          <title>"RPI CSR / SSR !"</title>
+        )}
         <meta name="description" content="Barebones nextjs+express setup" />
         <meta name="keywords" content="nextjs,express" />
         <meta name="author" content="Alexey Chernikov" />

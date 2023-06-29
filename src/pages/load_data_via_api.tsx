@@ -19,12 +19,12 @@ const LoadDataViaApi = (props: any) => {
   }, []);
 
   return (
-    <Layout title={"CSR Preloaded data"}>      
+    <Layout title={"CSR Preloaded data"}>
       <div className="f-row">
-        <h2 style={{ marginRight: "6vw" }}> 
-          SSR + CSR 
+        <h2 style={{ marginRight: "6vw" }}>
+          SSR + CSR
           <br />
-          { value || "Loading (dalayed 2s)"} 
+          {value || "Loading (dalayed 2s)"}
         </h2>
         <Button style={{ width: "max(12vw, 60px)" }} onClick={increment}>
           {" "}

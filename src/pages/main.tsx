@@ -5,7 +5,7 @@ export default function Main(props: any) {
   return (
     <Layout>
       <h4> RPI CSR/SSR template </h4>
-    
+
       <div style={{ marginBottom: "4vh" }} />
       <ul className="large_li">
         <li>

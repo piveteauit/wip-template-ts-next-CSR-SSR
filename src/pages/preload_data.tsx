@@ -20,11 +20,11 @@ const PreloadData = (props: any) => {
   return (
     <Layout title={"SSR Preloaded data"}>
       <h2>SSR Preloaded data</h2>
-      
+
       <div>
         <a href="/load_data_via_api">this example</a>
       </div>
-      
+
       <div className="f-row">
         <h2 style={{ marginRight: "6vw" }}> {value} </h2>
         <Button style={{ width: "max(12vw, 60px)" }} onClick={increment}>
