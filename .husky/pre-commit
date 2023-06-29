@@ -7,7 +7,7 @@ declare CLIENT_CHECK=$(git diff HEAD~ --name-only | grep 'src/')
 echo $API_CHECK $CLIENT_CHECK
 
 IYellow='\033[0;93m'
-IGreen='\033[0;92m' 
+IGreen='\033[1;92m'
 
 if [ $API_CHECK ] && [ $CLIENT_CHECK ]
 then
