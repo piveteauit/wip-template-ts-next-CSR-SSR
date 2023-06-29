@@ -7,7 +7,6 @@ const users = [
 const controllers = {
     users: {
         getAll(req: any, res: any, next: any) {
-            console.log("TOTO !!!")
             return res.status(200).json(users)
         }
     }

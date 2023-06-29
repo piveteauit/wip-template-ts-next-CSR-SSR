@@ -1,5 +1,5 @@
-import React from 'react'
-import Head from 'next/head'
+import React from 'react';
+import Head from 'next/head';
 
 const renderBack = (backPath: any) => {
   return (
@@ -7,8 +7,8 @@ const renderBack = (backPath: any) => {
       {' '}
       Back{' '}
     </a>
-  )
-}
+  );
+};
 
 export default function Layout(props: any) {
   return (
@@ -34,5 +34,5 @@ export default function Layout(props: any) {
         {props.children}
       </div>
     </div>
-  )
+  );
 }

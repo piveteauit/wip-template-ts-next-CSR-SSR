@@ -2,7 +2,7 @@
 import data from "../data/integer_memory_store";
 
 class Pages {
-    express: any; 
+    express: any;
     next: any;
 
   constructor(express: any, next: any) {
@@ -18,7 +18,6 @@ class Pages {
   initCustomPages() {
     /* With a monolith api+frontend, it's possible to serve pages with preloaded data */
     this.express.get('/preload_data', (req: any, res: any) => {
-        console.log('Preloading data 2    ---!!!')
       res.pageParams = {
         value: data.value
       }
@@ -27,7 +26,7 @@ class Pages {
 
     /* Special-purpose routing example */
     this.express.get('/large_or_small/:special_value', (req: any, res: any) => {
-      const intValue = parseInt(req.params.special_value)
+      const intValue = parseInt(req.params.special_value, 10)
       if(isNaN(intValue)) {
         return this.next.render(req, res, `/invalid_value`, req.query)
       }

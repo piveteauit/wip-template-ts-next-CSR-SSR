@@ -21,15 +21,14 @@
     "isolatedModules": true,
   },
   "include": [
-    "next-env.d.ts",
     "*.ts",
     "**.ts",
     "**/*.ts",
     "**/*.tsx",
-    "next.config.js"  
   ],
   "exclude": [
-    "node_modules",
-    "dist"
+    "next.config.js",  
+    "./node_modules",
+    "./dist"
   ]
 }

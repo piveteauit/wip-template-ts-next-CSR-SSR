@@ -6,14 +6,9 @@
       "noEmit": false,
     },
     "include": [
-      "api",
-      "api/*.ts",
-      "api/**/*.ts",
-      "api/**.ts"
-    ],
-    "exclude": [
-      "dist",
-      "*.json",
-      "**/*.json"
+      "*.ts",
+      "**.ts",
+      "**/*.ts",
+      "**/*.tsx",
     ]
   }

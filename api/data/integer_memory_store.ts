@@ -5,11 +5,11 @@ class InMemoryStore {
     constructor() {
       this._value = 3
     }
-  
+
     incr() {
       this._value = (this._value + 1) % 100000
     }
-  
+
     decr() {
       this._value--
       /*
@@ -20,12 +20,12 @@ class InMemoryStore {
         this._value = 0
       }
     }
-  
+
     get value() {
       return this._value
     }
-  
-  
+
+
   }
-  
+
   export default new InMemoryStore();
