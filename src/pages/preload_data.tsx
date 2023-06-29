@@ -1,6 +1,7 @@
 import React from "react"
 import Layout from "../view/layout"
 import Button from "../view/button"
+import Link from "next/link"
 
 export async function getServerSideProps({ req, res }: any) {
   return {
@@ -22,7 +23,7 @@ const PreloadData = (props: any) => {
       <h2>SSR Preloaded data</h2>
 
       <div>
-        <a href="/load_data_via_api">this example</a>
+        <Link href="/load_data_via_api">this example</Link>
       </div>
 
       <div className="f-row">
@@ -33,7 +34,7 @@ const PreloadData = (props: any) => {
         </Button>
       </div>
       <div style={{ marginBottom: "2vh" }} />
-      <a href="/"> Back </a>
+      <Link href="/"> Back </Link>
     </Layout>
   )
 }

@@ -17,7 +17,7 @@ export default function Layout(props: any) {
         {props?.title ? (
           <title>{props?.title}</title>
         ) : (
-          <title>"RPI CSR / SSR !"</title>
+          <title>RPI CSR / SSR !</title>
         )}
         <meta name="description" content="Barebones nextjs+express setup" />
         <meta name="keywords" content="nextjs,express" />
