@@ -20,4 +20,3 @@ export default function Main(props: any) {
     </Layout>
   )
 }
-
