@@ -9,7 +9,7 @@
     "build:next": "next build .",
     "build": "npm run build:next && npm run build:server",
     "prettier": "prettier --write ./**/*.{ts,tsx}",
-    "precommit": "prettier --write ./**/*.{ts,tsx}",
+    "precommit": "npm run prettier",
     "start": "NODE_ENV=production node dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
