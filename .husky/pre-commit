@@ -6,23 +6,29 @@ declare CLIENT_CHECK=$(git diff HEAD~ --name-only | grep 'src/')
 
 echo $API_CHECK $CLIENT_CHECK
 
+IYellow='\033[0;93m'
+IGreen='\033[0;92m' 
+
 if [ $API_CHECK ] && [ $CLIENT_CHECK ]
 then
-    echo 'Lint / Pretty / Build client & api'
+    echo ${IYellow} 'Lint / Pretty / Build client & api'
     npx npm run precommit
+    echo ${IGreen} 'All steps succeeded for both client and api'
     exit 0
 fi
 
 if [ $API_CHECK ]
 then
-    echo 'Lint / Pretty / Build api' 
+    echo ${IYellow} 'Lint / Pretty / Build api' 
     npx npm run precommit:api
+    echo ${IGreen} 'All steps succeeded for api'
     exit 0
 fi
 
 if [ $CLIENT_CHECK ]
 then
-    echo 'Lint / Pretty / Build client'
+    echo ${IYellow} 'Lint / Pretty / Build client'
     npx npm run precommit:client
+    echo ${IGreen} 'All steps succeeded for client'
     exit 0
 fi
