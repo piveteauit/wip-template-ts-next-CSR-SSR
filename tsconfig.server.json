@@ -1,0 +1,19 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+      "module": "commonjs",
+      "outDir": "./dist",
+      "noEmit": false,
+    },
+    "include": [
+      "api",
+      "api/*.ts",
+      "api/**/*.ts",
+      "api/**.ts"
+    ],
+    "exclude": [
+      "dist",
+      "*.json",
+      "**/*.json"
+    ]
+  }
