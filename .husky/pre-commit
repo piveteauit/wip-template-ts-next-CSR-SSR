@@ -25,7 +25,7 @@ then
     exit 0
 fi
 
-if [ $CLIENT_CHECK ]
+if $CLIENT_CHECK
 then
     echo ${IYellow} 'Lint / Pretty / Build client'
     npx npm run precommit:client
