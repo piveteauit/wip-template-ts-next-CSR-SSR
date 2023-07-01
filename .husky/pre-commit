@@ -1,26 +1,31 @@
 #!/usr/bin/env bash
 
-function check_api() {
-  API_CHECK=$(git diff HEAD~ --name-only | grep 'api/') | wc -c
-  if [[ $API_CHECK -gt 1 ]]; then
+declare API_CHECK=$(git diff HEAD~ --name-only | grep 'api/') | wc -c
+declare CLIENT_CHECK=$(git diff HEAD~ --name-only | grep 'src/') | wc -c
+
+echo "API_CHECK=$API_CHECK CLIENT_CHECK=$CLIENT_CHECK"
+echo '-----------------------'
+
+IYellow='\033[0;33m'
+IGreen='\033[0;32m'
+
+if [[ $API_CHECK -gt 1 && $CLIENT_CHECK -gt 1 ]]; then
+    echo "${IYellow} 'Lint / Pretty / Build client & api'"
+    npx npm run precommit
+    echo "${IGreen} 'All steps succeeded for both client and api'"
+    exit 0
+fi
+
+if [[ $API_CHECK -gt 1 ]]; then
     echo "${IYellow} 'Lint / Pretty / Build api'"
     npx npm run precommit:api
     echo "${IGreen} 'All steps succeeded for api'"
-  fi
-}
+    exit 0
+fi
 
-function check_client() {
-  CLIENT_CHECK=$(git diff HEAD~ --name-only | grep 'src/') | wc -c
-  if [[ $CLIENT_CHECK -gt 1 ]]; then
+if [[ $CLIENT_CHECK -gt 1 ]]; then
     echo "${IYellow} 'Lint / Pretty / Build client'"
     npx npm run precommit:client
     echo "${IGreen} 'All steps succeeded for client'"
-  fi
-}
-
-main() {
-  check_api
-  check_client
-}
-
-main
+    exit 0
+fi
