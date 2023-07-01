@@ -9,7 +9,7 @@ echo $API_CHECK $CLIENT_CHECK
 IYellow='\033[0;93m'
 IGreen='\033[1;92m'
 
-if !![ $API_CHECK ] && !![ $CLIENT_CHECK ]
+if [ $API_CHECK ] && [ $CLIENT_CHECK ]
 then
     echo ${IYellow} 'Lint / Pretty / Build client & api'
     npx npm run precommit
@@ -17,7 +17,7 @@ then
     exit 0
 fi
 
-if !![ $API_CHECK ]
+if [ $API_CHECK ]
 then
     echo ${IYellow} 'Lint / Pretty / Build api'
     npx npm run precommit:api
@@ -25,7 +25,7 @@ then
     exit 0
 fi
 
-if !![ $CLIENT_CHECK ]
+if [ $CLIENT_CHECK ]
 then
     echo ${IYellow} 'Lint / Pretty / Build client'
     npx npm run precommit:client
