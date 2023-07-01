@@ -24,6 +24,7 @@ export default function Users(props: any) {
 
   return (
     <div>
+      <h2> 2 users from api / ssr</h2>
       <ul>
         {users.map((u, i) => (
           <li key={i}>
