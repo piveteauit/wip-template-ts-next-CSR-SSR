@@ -9,8 +9,8 @@ function check_files() {
 }
 
 if [[ $API_CHECK -gt 1 || $CLIENT_CHECK -gt 1 ]]; then
-  check_files $API_CHECK api
-  check_files $CLIENT_CHECK src
+  check_files api
+  check_files client
   echo "${IGreen}All steps succeeded"
   exit 0
 fi
