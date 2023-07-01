@@ -1,0 +1,19 @@
+version: '2.4'
+services: 
+  main:
+    container_name: prefix-main
+    restart: always
+    image: prefix-main
+    build: 
+      context: ..
+      dockerfile: ./docker/Dockerfile
+    volumes:
+      - ../:/usr/app
+    ports:
+      - '3000:3000'
+    mem_limit: 2G
+    command: [
+      "sh",
+      "-c",
+      "npm run dev"
+    ]

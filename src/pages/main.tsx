@@ -5,7 +5,7 @@ import Link from "next/link"
 export default function Main(props: any) {
   return (
     <Layout>
-      <h4> RPI CSR/SSR template </h4>
+      <h4> From docker HMR 98: RPI CSR/SSR template </h4>
 
       <div style={{ marginBottom: "4vh" }} />
       <ul className="large_li">
