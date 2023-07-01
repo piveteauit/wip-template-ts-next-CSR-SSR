@@ -1,6 +1,12 @@
 import React from "react"
 import Head from "next/head"
 
+
+
+
+
+
+
 const renderBack = (backPath: any) => {
   return (
     <a style={{ position: "fixed", fontSize: "3vh" }} href={backPath}>
