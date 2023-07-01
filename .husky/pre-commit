@@ -1,36 +1,26 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
+#!/usr/bin/env bash
 
-declare API_CHECK=$(git diff HEAD~ --name-only | grep 'api/') | wc -c
-declare CLIENT_CHECK=$(git diff HEAD~ --name-only | grep 'src/') | wc -c
-
-echo '$API_CHECK $CLIENT_CHECK'
-echo $API_CHECK $CLIENT_CHECK
-echo '-----------------------'
-
-IYellow='\033[0;93m'
-IGreen='\033[1;92m'
-
-if [ $API_CHECK -gt 1] && [ $CLIENT_CHECK -gt 1 ]
-then
-    echo ${IYellow} 'Lint / Pretty / Build client & api'
-    npx npm run precommit
-    echo ${IGreen} 'All steps succeeded for both client and api'
-    exit 0
-fi
-
-if [ $API_CHECK -gt 1 ]
-then
-    echo ${IYellow} 'Lint / Pretty / Build api'
+function check_api() {
+  API_CHECK=$(git diff HEAD~ --name-only | grep 'api/') | wc -c
+  if [[ $API_CHECK -gt 1 ]]; then
+    echo "${IYellow} 'Lint / Pretty / Build api'"
     npx npm run precommit:api
-    echo ${IGreen} 'All steps succeeded for api'
-    exit 0
-fi
+    echo "${IGreen} 'All steps succeeded for api'"
+  fi
+}
 
-if [ $CLIENT_CHECK -gt 1 ]
-then
-    echo ${IYellow} 'Lint / Pretty / Build client'
+function check_client() {
+  CLIENT_CHECK=$(git diff HEAD~ --name-only | grep 'src/') | wc -c
+  if [[ $CLIENT_CHECK -gt 1 ]]; then
+    echo "${IYellow} 'Lint / Pretty / Build client'"
     npx npm run precommit:client
-    echo ${IGreen} 'All steps succeeded for client'
-    exit 0
-fi
+    echo "${IGreen} 'All steps succeeded for client'"
+  fi
+}
+
+main() {
+  check_api
+  check_client
+}
+
+main
