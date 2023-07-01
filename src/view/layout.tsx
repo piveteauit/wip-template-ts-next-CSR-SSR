@@ -26,7 +26,7 @@ export default function Layout(props: any) {
           content="width=device-width, initial-scale=1, maximum-scale=1"
         />
       </Head>
-      {props.backPath ? renderBack(props.backPath) : ""}
+      {props.backPath ?? renderBack(props.backPath)}
       <div
         style={{
           marginLeft: "20%",
