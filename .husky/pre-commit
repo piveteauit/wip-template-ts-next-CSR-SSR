@@ -17,7 +17,7 @@ then
     exit 0
 fi
 
-if [ $API_CHECK ]
+if $API_CHECK
 then
     echo ${IYellow} 'Lint / Pretty / Build api'
     npx npm run precommit:api
