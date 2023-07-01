@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-declare API_CHECK=$(git diff HEAD~ --name-only | grep 'api/') | wc -c
-declare CLIENT_CHECK=$(git diff HEAD~ --name-only | grep 'src/') | wc -c
+API_CHECK=$(git diff HEAD~ --name-only | grep 'api/') | wc -c
+CLIENT_CHECK=$(git diff HEAD~ --name-only | grep 'src/') | wc -c
 
 echo "API_CHECK=$API_CHECK CLIENT_CHECK=$CLIENT_CHECK"
 echo '-----------------------'
