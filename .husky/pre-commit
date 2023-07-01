@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
-API_CHECK=$(git diff HEAD~ --name-only | grep 'api/') | wc -c
-CLIENT_CHECK=$(git diff HEAD~ --name-only | grep 'src/') | wc -c
+API_CHECK=$(git diff HEAD~ --name-only | grep 'api/' | wc -c)
+CLIENT_CHECK=$(git diff HEAD~ --name-only | grep 'src/' | wc -c)
 
 IYellow='\033[0;33m'
 IGreen='\033[0;32m'
