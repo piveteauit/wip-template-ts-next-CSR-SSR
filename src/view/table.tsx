@@ -103,9 +103,9 @@ const TableComponent = ({ data, columns }) => {
                   </div>
                 </th>
               ))}
-              {actionsColumns.map(column => {
+              {actionsColumns.map((column,i ) => {
                 return (
-                  <th scope="col" className="p3-1 py-3">
+                  <th key={`th-column-${i}`} scope="col" className="p3-1 py-3">
                     {/*                    <span className="sr-only">{column.name}</span>*/}
                   </th>
                 )
@@ -128,7 +128,7 @@ const TableComponent = ({ data, columns }) => {
                   key={`row.id--${i}`}
                   className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
                 >
-                  {dataColumns.map((column,i ) => (
+                  {dataColumns.map((column, i) => (
                     <td
                       key={`dataColumns--${i}`}
                       className={
@@ -142,8 +142,10 @@ const TableComponent = ({ data, columns }) => {
                   ))}
 
                   {actionsColumns.map((column, i) => (
-                    <td                   key={`column.id--${i}`}
-                                          className="px-1 py-4 text-right">
+                    <td
+                      key={`column.id--${i}`}
+                      className="px-1 py-4 text-right"
+                    >
                       <a
                         href="#"
                         className="font-medium text-red-600 dark:text-red-500 hover:underline"
