@@ -11,7 +11,7 @@ const columns = [
   { id: "id", name: "ID" },
   { id: "name", name: "Name" },
   { id: "age", name: "Age" },
-  { id: "city", name: "City"}
+  { id: "city", name: "City" },
 ]
 
 export default function Users(props: any) {
@@ -34,8 +34,11 @@ export default function Users(props: any) {
         ))}
       </ul>*/}
 
-      <div style={{padding: 30}}>
-        <Table data={users} columns={Object.keys(users[0]).map((k) => ({id: k, name: k}))} />
+      <div style={{ padding: 30 }}>
+        <Table
+          data={users}
+          columns={Object.keys(users[0] || []).map(k => ({ id: k, name: k }))}
+        />
       </div>
     </div>
   )
