@@ -128,9 +128,9 @@ const TableComponent = ({ data, columns }) => {
                   key={`row.id--${i}`}
                   className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
                 >
-                  {dataColumns.map(column => (
+                  {dataColumns.map((column,i ) => (
                     <td
-                      key={column.id}
+                      key={`dataColumns--${i}`}
                       className={
                         actions.includes(column.id)
                           ? "px-6 py-4 text-right"
@@ -141,8 +141,9 @@ const TableComponent = ({ data, columns }) => {
                     </td>
                   ))}
 
-                  {actionsColumns.map(column => (
-                    <td className="px-1 py-4 text-right">
+                  {actionsColumns.map((column, i) => (
+                    <td                   key={`column.id--${i}`}
+                                          className="px-1 py-4 text-right">
                       <a
                         href="#"
                         className="font-medium text-red-600 dark:text-red-500 hover:underline"
