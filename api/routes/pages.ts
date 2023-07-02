@@ -1,5 +1,5 @@
 import data from "../data/integer_memory_store"
-import {controllers} from '../controllers';
+import { controllers } from "../controllers"
 
 class Pages {
   express: any
@@ -17,7 +17,7 @@ class Pages {
 
   initCustomPages() {
     this.express.get("/users", async (req: any, res: any) => {
-      const users = await controllers.users.getAll(req, res);
+      const users = await controllers.users.getAll(req, res)
       console.log("---", users)
       res.pageParams = {
         users,
@@ -51,7 +51,7 @@ class Pages {
   initDefaultPages() {
     this.express.get("/", (req: any, res: any) => {
       res.pageParams = {
-        test: "Main page params"
+        test: "Main page params",
       }
       return this.next.render(req, res, `/main`, req.query)
     })

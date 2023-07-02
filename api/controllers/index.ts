@@ -16,12 +16,12 @@ const users = [
 const controllers = {
   users: {
     getAll(req: any, res: any, next?: any) {
-      const fullUsers = users.map((u) => ({
+      const fullUsers = users.map(u => ({
         ...u,
         email: "user@email.fake",
         country: "France",
         created_at: "2023-01-01",
-        updated_at: "2023-01-01"
+        updated_at: "2023-01-01",
       }))
       return next ? res.status(200).json(fullUsers) : fullUsers
     },

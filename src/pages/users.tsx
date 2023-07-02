@@ -9,14 +9,14 @@ export async function getServerSideProps({ req, res }: any) {
   }
 }
 
-
 export default function Users(props: any) {
   const [users, setUsers] = useState(props.users)
 
   useEffect(() => {
-    if (!users?.length) fetch("/api/users")
-      .then(r => r.json())
-      .then(setUsers)
+    if (!users?.length)
+      fetch("/api/users")
+        .then(r => r.json())
+        .then(setUsers)
   }, [users])
 
   return (
@@ -33,7 +33,11 @@ export default function Users(props: any) {
       <div style={{ padding: 30 }}>
         <Table
           data={users}
-          columns={Object.keys({...(users[0] || {}), edit: {id: "edit", name: "edit"}, remove: {id: "remove", name: "remove"} }).map(k => ({ id: k, name: k }))}
+          columns={Object.keys({
+            ...(users[0] || {}),
+            edit: { id: "edit", name: "edit" },
+            remove: { id: "remove", name: "remove" },
+          }).map(k => ({ id: k, name: k }))}
         />
       </div>
     </div>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 
-const actions = ["edit", "remove"];
+const actions = ["edit", "remove"]
 
 const TableComponent = ({ data, columns }) => {
   const [filteredData, setFilteredData] = useState([])
@@ -49,8 +49,8 @@ const TableComponent = ({ data, columns }) => {
     setSortedData(data)
   }, [data])
 
-  const actionsColumns = columns.filter(({id}) => actions.includes(id));
-  const dataColumns = columns.filter(({id}) => !actions.includes(id));
+  const actionsColumns = columns.filter(({ id }) => actions.includes(id))
+  const dataColumns = columns.filter(({ id }) => !actions.includes(id))
 
   return (
     <div>
@@ -103,15 +103,15 @@ const TableComponent = ({ data, columns }) => {
                   </div>
                 </th>
               ))}
-              { actionsColumns.map((column) => {
+              {actionsColumns.map(column => {
                 return (
                   <th scope="col" className="p3-1 py-3">
-{/*                    <span className="sr-only">{column.name}</span>*/}
+                    {/*                    <span className="sr-only">{column.name}</span>*/}
                   </th>
                 )
               })}
 
-{/*              <th scope="col" className="p3-6 py-3">
+              {/*              <th scope="col" className="p3-6 py-3">
                 <span className="sr-only">Edit</span>
               </th>
               <th scope="col" className="p3-6 py-3">
@@ -123,13 +123,20 @@ const TableComponent = ({ data, columns }) => {
           <tbody>
             {sortedData
               .slice((currentPage - 1) * rowsPerPage, currentPage * rowsPerPage)
-              .map(row => (
+              .map((row, i) => (
                 <tr
-                  key={row.id}
+                  key={`row.id--${i}`}
                   className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
                 >
                   {dataColumns.map(column => (
-                    <td key={column.id} className={ actions.includes(column.id) ? "px-6 py-4 text-right" : "px-2 py-2"}>
+                    <td
+                      key={column.id}
+                      className={
+                        actions.includes(column.id)
+                          ? "px-6 py-4 text-right"
+                          : "px-2 py-2"
+                      }
+                    >
                       {row[column.id] || column.name}
                     </td>
                   ))}
@@ -140,12 +147,10 @@ const TableComponent = ({ data, columns }) => {
                         href="#"
                         className="font-medium text-red-600 dark:text-red-500 hover:underline"
                       >
-                        {column.name.substring(0,3)}
+                        {column.name.substring(0, 3)}
                       </a>
                     </td>
                   ))}
-
-
 
                   {/* <td className="px-6 py-4 text-right">
                     <a
@@ -170,13 +175,12 @@ const TableComponent = ({ data, columns }) => {
           </tbody>
           <tfoot>
             <tr>
-              <td colSpan={dataColumns.length - 2}>
+              <td colSpan={dataColumns.length - 2}>10 of 100</td>
 
-                10 of 100
-
-              </td>
-
-              <td className={"flex justify-end"} colSpan={columns.length - (dataColumns.length - 2)}>
+              <td
+                className={"flex justify-end"}
+                colSpan={columns.length - (dataColumns.length - 2)}
+              >
                 <button>1</button>
                 <button>2</button>
                 <button>3</button>

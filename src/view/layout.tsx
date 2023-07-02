@@ -1,14 +1,20 @@
 import React from "react"
 import Head from "next/head"
-import Link from './link';
+import Link from "./link"
 
-const renderBack = ({backPath, goBack}: any) => {
-  const onClick = (goBack) ? (evt: any) => {
-    evt.preventDefault();
-    goBack();
-  } : undefined;
+const renderBack = ({ backPath, goBack }: any) => {
+  const onClick = goBack
+    ? (evt: any) => {
+        evt.preventDefault()
+        goBack()
+      }
+    : undefined
   return (
-    <Link onClick={onClick} style={{ position: "fixed", fontSize: "3vh" }} href={"#"} >
+    <Link
+      onClick={onClick}
+      style={{ position: "fixed", fontSize: "3vh" }}
+      href={"#"}
+    >
       Back{" "}
     </Link>
   )
