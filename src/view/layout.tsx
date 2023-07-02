@@ -1,11 +1,16 @@
 import React from "react"
 import Head from "next/head"
+import Link from './link';
 
-const renderBack = (backPath: any) => {
+const renderBack = ({backPath, goBack}: any) => {
+  const onClick = (goBack) ? (evt: any) => {
+    evt.preventDefault();
+    goBack();
+  } : undefined;
   return (
-    <a style={{ position: "fixed", fontSize: "3vh" }} href={backPath}>
+    <Link onClick={onClick} style={{ position: "fixed", fontSize: "3vh" }} href={"#"} >
       Back{" "}
-    </a>
+    </Link>
   )
 }
 
@@ -26,7 +31,7 @@ export default function Layout(props: any) {
           content="width=device-width, initial-scale=1, maximum-scale=1"
         />
       </Head>
-      {props.backPath ?? renderBack(props.backPath)}
+      {props.backPath ?? renderBack(props)}
       <div
         style={{
           marginLeft: "20%",

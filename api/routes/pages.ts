@@ -1,4 +1,5 @@
 import data from "../data/integer_memory_store"
+import {controllers} from '../controllers';
 
 class Pages {
   express: any
@@ -15,8 +16,18 @@ class Pages {
   }
 
   initCustomPages() {
+    this.express.get("/users", async (req: any, res: any) => {
+      const users = await controllers.users.getAll(req, res);
+      console.log("---", users)
+      res.pageParams = {
+        users,
+      }
+      return this.next.render(req, res, `/users`)
+    })
+
     /* With a monolith api+frontend, it's possible to serve pages with preloaded data */
     this.express.get("/preload_data", (req: any, res: any) => {
+      console.log("vale --", data.value)
       res.pageParams = {
         value: data.value,
       }
@@ -39,6 +50,9 @@ class Pages {
 
   initDefaultPages() {
     this.express.get("/", (req: any, res: any) => {
+      res.pageParams = {
+        test: "Main page params"
+      }
       return this.next.render(req, res, `/main`, req.query)
     })
 

@@ -32,7 +32,6 @@ const LoadDataViaApi = (props: any) => {
         </Button>
       </div>
       <div style={{ marginBottom: "2vh" }} />
-      <a href="/"> Back </a>
     </Layout>
   )
 }

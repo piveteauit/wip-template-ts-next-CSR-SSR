@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react"
 
+const actions = ["edit", "remove"];
+
 const TableComponent = ({ data, columns }) => {
   const [filteredData, setFilteredData] = useState([])
   const [sortedData, setSortedData] = useState([])
@@ -47,6 +49,9 @@ const TableComponent = ({ data, columns }) => {
     setSortedData(data)
   }, [data])
 
+  const actionsColumns = columns.filter(({id}) => actions.includes(id));
+  const dataColumns = columns.filter(({id}) => !actions.includes(id));
+
   return (
     <div>
       <h2 className={"ext-3xl font-bold underline"}> User </h2>
@@ -55,13 +60,13 @@ const TableComponent = ({ data, columns }) => {
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-              {columns.map(column => (
+              {dataColumns.map(column => (
                 <th scope="col" className="px-3 py-2" key={column.id}>
                   <div className="relative flex items-center">
                     <div className="absolute inset-y-0 left-0 flex items-center pointer-events-none">
                       <svg
                         aria-hidden="true"
-                        className="w-5 h-5 text-gray-500 dark:text-gray-400"
+                        className="w-3 h-3 text-gray-500 dark:text-gray-400"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg"
@@ -76,7 +81,7 @@ const TableComponent = ({ data, columns }) => {
                     <input
                       type="text"
                       name={column.id}
-                      className="w-100 bg-gray-50 border-none-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-7 p-1  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-black dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      className="w-100 bg-gray-50 border-none dark:text-gray-400 text-xs rounded-lg block w-full pl-4 p-1  dark:bg-gray-700  placeholder-gray-400 focus:outline-none focus:ring focus:border-transparent"
                       placeholder={column.name}
                       onChange={handleFilter}
                     />
@@ -98,13 +103,21 @@ const TableComponent = ({ data, columns }) => {
                   </div>
                 </th>
               ))}
+              { actionsColumns.map((column) => {
+                return (
+                  <th scope="col" className="p3-1 py-3">
+{/*                    <span className="sr-only">{column.name}</span>*/}
+                  </th>
+                )
+              })}
 
-              <th scope="col" className="p3-6 py-3">
+{/*              <th scope="col" className="p3-6 py-3">
                 <span className="sr-only">Edit</span>
               </th>
               <th scope="col" className="p3-6 py-3">
                 <span className="sr-only">Remove</span>
               </th>
+              */}
             </tr>
           </thead>
           <tbody>
@@ -115,13 +128,26 @@ const TableComponent = ({ data, columns }) => {
                   key={row.id}
                   className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
                 >
-                  {columns.map(column => (
-                    <td key={column.id} className={"px-2 py-2"}>
-                      {row[column.id]}
+                  {dataColumns.map(column => (
+                    <td key={column.id} className={ actions.includes(column.id) ? "px-6 py-4 text-right" : "px-2 py-2"}>
+                      {row[column.id] || column.name}
                     </td>
                   ))}
 
-                  <td className="px-6 py-4 text-right">
+                  {actionsColumns.map(column => (
+                    <td className="px-1 py-4 text-right">
+                      <a
+                        href="#"
+                        className="font-medium text-red-600 dark:text-red-500 hover:underline"
+                      >
+                        {column.name.substring(0,3)}
+                      </a>
+                    </td>
+                  ))}
+
+
+
+                  {/* <td className="px-6 py-4 text-right">
                     <a
                       href="#"
                       className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
@@ -138,9 +164,26 @@ const TableComponent = ({ data, columns }) => {
                       Remove
                     </a>
                   </td>
+                  */}
                 </tr>
               ))}
           </tbody>
+          <tfoot>
+            <tr>
+              <td colSpan={dataColumns.length - 2}>
+
+                10 of 100
+
+              </td>
+
+              <td className={"flex justify-end"} colSpan={columns.length - (dataColumns.length - 2)}>
+                <button>1</button>
+                <button>2</button>
+                <button>3</button>
+                <button>4</button>
+              </td>
+            </tr>
+          </tfoot>
         </table>
       </div>
     </div>

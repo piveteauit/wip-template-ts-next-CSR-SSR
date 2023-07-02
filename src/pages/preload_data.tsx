@@ -6,7 +6,7 @@ import Link from "next/link"
 export async function getServerSideProps({ req, res }: any) {
   return {
     props: {
-      value: parseInt(res.pageParams.value, 10),
+      value: parseInt(res.pageParams?.value || 0, 10),
     },
   }
 }

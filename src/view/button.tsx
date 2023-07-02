@@ -2,7 +2,7 @@ const Button = (props: any) => {
   return (
     <div
       style={props.style}
-      className="button f-col f-j-center"
+      className="hover:bg-slate-500 transition-all:2s"
       onClick={props.onClick}
     >
       {props.children}

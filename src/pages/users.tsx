@@ -1,31 +1,27 @@
 import { useEffect, useState } from "react"
 import Table from "../view/table"
 
-const data = [
-  { id: 1, name: "John Doe", age: 30, city: "Btz" },
-  { id: 2, name: "Jane Doe", age: 25, city: "Btz" },
-  { id: 3, name: "Peter Smith", age: 40, city: "Btz" },
-]
+export async function getServerSideProps({ req, res }: any) {
+  return {
+    props: {
+      users: res.pageParams?.users || [],
+    },
+  }
+}
 
-const columns = [
-  { id: "id", name: "ID" },
-  { id: "name", name: "Name" },
-  { id: "age", name: "Age" },
-  { id: "city", name: "City" },
-]
 
 export default function Users(props: any) {
-  const [users, setUsers] = useState([])
+  const [users, setUsers] = useState(props.users)
 
   useEffect(() => {
-    fetch("/api/users")
+    if (!users?.length) fetch("/api/users")
       .then(r => r.json())
       .then(setUsers)
-  }, [])
+  }, [users])
 
   return (
     <div>
-      <h2> {users.length} users from api / ssr</h2>
+      <h2> {users?.length} users from api / ssr</h2>
       {/*<ul>
         {users.map((u, i) => (
           <li key={i}>
@@ -37,7 +33,7 @@ export default function Users(props: any) {
       <div style={{ padding: 30 }}>
         <Table
           data={users}
-          columns={Object.keys(users[0] || []).map(k => ({ id: k, name: k }))}
+          columns={Object.keys({...(users[0] || {}), edit: {id: "edit", name: "edit"}, remove: {id: "remove", name: "remove"} }).map(k => ({ id: k, name: k }))}
         />
       </div>
     </div>
