@@ -1,12 +1,10 @@
-import React from 'react';
+import React from "react"
 
 export default function TableFooter() {
   return (
     <tfoot>
       <tr>
-        <th colSpan={4}>
-          1 - 10 of 100
-        </th>
+        <th colSpan={4}>1 - 10 of 100</th>
 
         <td colSpan={4} className={"text-right"}>
           <div className="join">
@@ -17,5 +15,5 @@ export default function TableFooter() {
         </td>
       </tr>
     </tfoot>
-  );
+  )
 }

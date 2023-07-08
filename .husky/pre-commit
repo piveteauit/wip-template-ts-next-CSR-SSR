@@ -5,28 +5,29 @@ CLIENT_CHECK=$(git diff HEAD~ --name-only | grep 'src/' | wc -c)
 
 IYellow='\033[0;33m'
 IGreen='\033[0;32m'
+IEnd='\033[0;0m'
 
 if [[ $API_CHECK -gt 1 && $CLIENT_CHECK -gt 1 ]]; then
-    echo "${IYellow} 'Lint / Pretty / Build client & api'"
+    echo "${IYellow} 'Lint / Pretty / Build client & api'${IEnd}"
     npx npm run precommit
-    echo "${IGreen} 'All steps succeeded for both client and api'"
+    echo "${IGreen} 'All steps succeeded for both client and api'${IEnd}"
     exit 0
 fi
 
 if [[ $API_CHECK -gt 1 ]]; then
-    echo "${IYellow} 'Lint / Pretty / Build api'"
+    echo "${IYellow} 'Lint / Pretty / Build api'${IEnd}"
     npx npm run precommit:api
-    echo "${IGreen} 'All steps succeeded for api'"
+    echo "${IGreen} 'All steps succeeded for api'${IEnd}"
     exit 0
 else
-    echo "${IGreen} API already up to date"
+    echo "${IGreen} API already up to date${IEnd}"
 fi
 
 if [[ $CLIENT_CHECK -gt 1 ]]; then
-    echo "${IYellow} 'Lint / Pretty / Build client'"
+    echo "${IYellow} 'Lint / Pretty / Build client'${IEnd}"
     npx npm run precommit:client
-    echo "${IGreen} 'All steps succeeded for client'"
+    echo "${IGreen} 'All steps succeeded for client'${IEnd}"
     exit 0
 else
-    echo "${IGreen} Client already up to date"
+    echo "${IGreen} Client already up to date${IEnd}"
 fi
