@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react"
-import TableFooter from "./components/table/tfoot"
-import TableHeader from "./components/table/thead"
-import TableBody from "./components/table/tbody"
+import TableFooter from "./tfoot"
+import TableHeader from "./thead"
+import TableBody from "./tbody"
 
 const actions = ["edit", "remove"]
 
-const TableComponent = ({ data, columns }) => {
+const Table = ({ data, columns }) => {
   const cols = columns.reduce(
-    (acc, cur) => {
+    (acc: any, cur: any) => {
       acc[actions.includes(cur.id) ? "action" : "data"].push(cur)
       return acc
     },
@@ -15,8 +15,8 @@ const TableComponent = ({ data, columns }) => {
   )
 
   return (
-    <div className={"overflow-x-auto"}>
-      <table className={"table table-xs"}>
+    <div className={"overflow-x-auto hover:divide-x-8"}>
+      <table className={"table table-xs animate-spin"}>
         <TableHeader cols={cols} />
         <TableBody data={data} columns={columns} />
         <TableFooter />
@@ -25,4 +25,4 @@ const TableComponent = ({ data, columns }) => {
   )
 }
 
-export default TableComponent
+export default Table

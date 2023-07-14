@@ -14,6 +14,7 @@ class ApiRouter {
     this.initApi()
     this.initPages()
     this.initErrors()
+    console.log("Api is well initialized !")
   }
 
   initApi() {

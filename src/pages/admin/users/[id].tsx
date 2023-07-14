@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
-import Table from "../view/table"
+import Table from "../../../view/components/table"
+import { useRouter } from "next/router"
 
-export async function getServerSideProps({ req, res }: any) {
+export async function getServerSideProps({ req, res }: {req: Express.Request, res: Express.Response & any}) {
   return {
     props: {
       users: res.pageParams?.users || [],
@@ -11,17 +12,19 @@ export async function getServerSideProps({ req, res }: any) {
 
 export default function Users(props: any) {
   const [users, setUsers] = useState(props.users)
+  const router = useRouter()
+  const { id } = router.query
 
   useEffect(() => {
     if (!users?.length)
-      fetch("/api/users")
+      fetch(`/api/users/${id}`)
         .then(r => r.json())
         .then(setUsers)
-  }, [users])
+  }, [users, id])
 
   return (
     <div>
-      <h2> {users?.length} users from api / ssr</h2>
+      <h2 className="fontsize-12"> {users?.length} users from api / ssr</h2>
       <div style={{ padding: 30 }}>
         <Table
           data={users.map(u => ({

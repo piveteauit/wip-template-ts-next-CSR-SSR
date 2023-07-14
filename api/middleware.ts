@@ -11,7 +11,7 @@ class Middleware {
   async init() {
     this.express.use(bodyParser.json())
     this.express.use(bodyParser.urlencoded({ extended: false }))
-    //    this.express.use(favicon(path.join(__dirname, '..', 'public', 'favicon.png')));
+    /* this.express.use(favicon(path.join(__dirname, '..', 'public', 'favicon.png'))); */
 
     this.initErrors()
   }

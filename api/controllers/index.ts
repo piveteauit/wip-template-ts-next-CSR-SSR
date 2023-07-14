@@ -25,6 +25,19 @@ const controllers = {
       }))
       return next ? res.status(200).json(fullUsers) : fullUsers
     },
+
+    getById(req: any, res: any, next: any) {
+      const fullUsers = users.map(u => ({
+        ...u,
+        email: "user@email.fake",
+        country: "France",
+        created_at: "2023-01-01",
+        updated_at: "2023-01-01",
+      }))
+      const user = fullUsers.find(({ id }) => id === req.params.id)
+
+      return next ? res.status(200).json(users) : user
+    },
   },
 }
 
