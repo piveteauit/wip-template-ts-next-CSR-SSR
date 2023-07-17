@@ -1,6 +1,6 @@
-import data from "../data/integer_memory_store"
-import { controllers } from "../controllers"
-import NotFoundError from "../../shared/errors/NotFoundError"
+import data from "../api/data/integer_memory_store"
+import { controllers } from "../api/controllers"
+import NotFoundError from "../shared/errors/NotFoundError"
 
 class Pages {
   express: any
