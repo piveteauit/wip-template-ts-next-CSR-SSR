@@ -1,5 +1,5 @@
-import { controllers } from "../controllers"
-import data from "../data/integer_memory_store"
+import { controllers } from "../api/controllers"
+import data from "../api/data/integer_memory_store"
 
 class Api {
   express: any
