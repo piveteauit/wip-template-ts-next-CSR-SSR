@@ -1,8 +1,13 @@
 #!/usr/bin/env sh
 
+
 API_CHECK=$(git diff HEAD~ --name-only | grep 'api/' | wc -c)
 CLIENT_CHECK=$(git diff HEAD~ --name-only | grep 'src/' | wc -c)
 
+if [[ $API_CHECK -lt 1 ]]; then
+    API_CHECK=$(git diff HEAD~ --name-only | grep '_core/' | wc -c)
+fi
+    
 IYellow='\033[0;33m'
 IGreen='\033[0;32m'
 IEnd='\033[0;0m'
