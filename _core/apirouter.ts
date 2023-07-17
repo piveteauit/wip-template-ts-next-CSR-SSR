@@ -1,0 +1,58 @@
+import apiRoutes from "../api/routes/api"
+import pagesRoutes from "../api/routes/pages"
+
+class ApiRouter {
+  express: any
+  next: any
+
+  constructor(express: any, next: any) {
+    this.express = express
+    this.next = next
+  }
+
+  async init() {
+    this.initApi()
+    this.initPages()
+    this.initErrors()
+    console.log("Api is well initialized !")
+  }
+
+  initApi() {
+    return new apiRoutes(this.express).init()
+  }
+
+  initPages() {
+    return new pagesRoutes(this.express, this.next).init()
+  }
+
+  initErrors() {
+    // catch 404 and forward to error handler
+    this.express.use((req: any, res: any, next: any) => {
+      const err: any = new Error("Not Found")
+      err.status = 404
+      next(err)
+    })
+
+    this.express.use((err: any, req: any, res: any, next: any) => {
+      res.status(err.status || 500)
+      res.locals.error = err
+      res.locals.errorDescription = err.message
+      console.log(
+        "----------",
+        req.isSSR,
+        err.status,
+        err.message,
+        next,
+        "<<<<<<<<<<<<<<<<<<<"
+      )
+
+      if (req.isSSR) return this.next.render(req, res, "/_error", {})
+
+      return res
+        .status(err.status || 404)
+        .json({ message: err.message || "Unkonwnofe error" })
+    })
+  }
+}
+
+export default ApiRouter
