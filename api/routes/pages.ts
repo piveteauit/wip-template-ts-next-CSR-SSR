@@ -10,8 +10,8 @@ class Pages {
     this.express = express
     this.next = next
     this.express.use((req, res, next) => {
-      req.isSSR = true;
-      next();
+      req.isSSR = true
+      next()
     })
   }
 
@@ -39,11 +39,10 @@ class Pages {
       return this.next.render(req, res, `/preload_data`)
     })
 
-
     this.express.get("/preload_data/:id", (req: any, res: any) => {
       console.log("vale --", data.value)
-      
-      if (Number(req.params.id) > 10) throw new NotFoundError("Preloaded data");
+
+      if (Number(req.params.id) > 10) throw new NotFoundError("Preloaded data")
 
       res.pageParams = {
         value: data.value,
@@ -51,7 +50,6 @@ class Pages {
 
       return this.next.render(req, res, `/preload_data`)
     })
-
 
     /* Special-purpose routing example */
     this.express.get("/large_or_small/:special_value", (req: any, res: any) => {

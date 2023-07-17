@@ -1,4 +1,4 @@
-import NotFoundError from "../../shared/errors/NotFoundError";
+import NotFoundError from "../../shared/errors/NotFoundError"
 
 const users = [
   { id: 1, name: "John" },
@@ -39,10 +39,14 @@ const controllers = {
       const user = fullUsers.find(({ id }) => id === Number(req.params.id))
 
       if (!user) {
-        const error = new NotFoundError('user');
-        throw new NotFoundError("User");
-        console.log(error);
-        return next ? res.status(404 || error.status).json({message: error.message, code: error.code}) : error;
+        const error = new NotFoundError("user")
+        throw new NotFoundError("User")
+        console.log(error)
+        return next
+          ? res
+              .status(404 || error.status)
+              .json({ message: error.message, code: error.code })
+          : error
       }
 
       return next ? res.status(200).json(user) : user

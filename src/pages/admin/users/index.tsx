@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import Table from "../../../view/components/table";
+import { useEffect, useState } from "react"
+import Table from "../../../view/components/table"
 
 import Link from "../../../view/link"
 
@@ -28,9 +28,7 @@ export default function Users(props: any) {
         <Table
           data={users.map(u => ({
             ...u,
-            goto: (
-              <Link href={`users/${u.id}`} >Go to user {u.id}</Link>
-            ),
+            goto: <Link href={`users/${u.id}`}>Go to user {u.id}</Link>,
             edit: (
               <a className={"hover:cursor-pointer text-center"}>
                 <svg
