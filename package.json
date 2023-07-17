@@ -12,7 +12,7 @@
     "build:api": "tsc --project ./_core/tsconfig.json",
     "build:client": "next build .",
     "prebuild": "npm run prebuild:client && npm run prebuild:api && npm run clear:build",
-    "prebuild:api": "tsc --project ./api/tsconfig.json --noEmit && npm run clear:build",
+    "prebuild:api": "tsc --project ./_core/tsconfig.json --noEmit && npm run clear:build",
     "prebuild:client": "next build . && npm run clear:build",
     "prettier": "npm run prettier:api && npm run prettier:client",
     "prettier:api": "prettier --write ./_core/* && prettier --write ./api/*",
