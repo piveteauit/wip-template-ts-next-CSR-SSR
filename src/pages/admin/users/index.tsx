@@ -1,5 +1,7 @@
-import { useEffect, useState } from "react"
-import Table from "../../../view/components/table"
+import { useEffect, useState } from "react";
+import Table from "../../../view/components/table";
+
+import Link from "../../../view/link"
 
 export async function getServerSideProps({ req, res }: any) {
   return {
@@ -26,6 +28,9 @@ export default function Users(props: any) {
         <Table
           data={users.map(u => ({
             ...u,
+            goto: (
+              <Link href={`users/${u.id}`} >Go to user {u.id}</Link>
+            ),
             edit: (
               <a className={"hover:cursor-pointer text-center"}>
                 <svg
@@ -67,6 +72,7 @@ export default function Users(props: any) {
             ...(users[0] || {}),
             edit: { id: "edit", name: "edit" },
             remove: { id: "remove", name: "remove" },
+            goto: { id: "goto", name: "goto" },
           }).map(k => ({ id: k, name: k }))}
         />
       </div>

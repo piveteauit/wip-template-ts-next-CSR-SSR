@@ -16,7 +16,7 @@ const Table = ({ data, columns }) => {
 
   return (
     <div className={"overflow-x-auto hover:divide-x-8"}>
-      <table className={"table table-xs animate-spin"}>
+      <table className={"table table-xs"}>
         <TableHeader cols={cols} />
         <TableBody data={data} columns={columns} />
         <TableFooter />

@@ -2,7 +2,13 @@ import { useEffect, useState } from "react"
 import Table from "../../../view/components/table"
 import { useRouter } from "next/router"
 
-export async function getServerSideProps({ req, res }: {req: Express.Request, res: Express.Response & any}) {
+export async function getServerSideProps({
+  req,
+  res,
+}: {
+  req: Express.Request
+  res: Express.Response & any
+}) {
   return {
     props: {
       users: res.pageParams?.users || [],
@@ -11,23 +17,23 @@ export async function getServerSideProps({ req, res }: {req: Express.Request, re
 }
 
 export default function Users(props: any) {
-  const [users, setUsers] = useState(props.users)
+  const [user, setUser] = useState(props.user)
   const router = useRouter()
   const { id } = router.query
 
   useEffect(() => {
-    if (!users?.length)
+    if (!user)
       fetch(`/api/users/${id}`)
         .then(r => r.json())
-        .then(setUsers)
-  }, [users, id])
+        .then(setUser)
+  }, [user, id])
 
   return (
     <div>
-      <h2 className="fontsize-12"> {users?.length} users from api / ssr</h2>
+      <h2 className="fontsize-12"> 1 user found from api / ssr</h2>
       <div style={{ padding: 30 }}>
         <Table
-          data={users.map(u => ({
+          data={[user].map(u => ({
             ...u,
             edit: (
               <a className={"hover:cursor-pointer text-center"}>
@@ -67,7 +73,7 @@ export default function Users(props: any) {
             ),
           }))}
           columns={Object.keys({
-            ...(users[0] || {}),
+            ...(user || {}),
             edit: { id: "edit", name: "edit" },
             remove: { id: "remove", name: "remove" },
           }).map(k => ({ id: k, name: k }))}

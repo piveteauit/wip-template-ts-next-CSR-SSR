@@ -9,6 +9,7 @@ class Api {
 
   init() {
     this.express.get("/api/users", controllers.users.getAll)
+    this.express.get("/api/users/:id", controllers.users.getById)
 
     this.express.get("/api/get", (req: any, res: any) => {
       res.send({ i: data.value })

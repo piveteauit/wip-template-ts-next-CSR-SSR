@@ -37,7 +37,11 @@ class ApiRouter {
       res.status(err.status || 500)
       res.locals.error = err
       res.locals.errorDescription = err.message
-      this.next.render(req, res, "/_error", {})
+      console.log("----------", req.isSSR, err.status, err.message, next, "<<<<<<<<<<<<<<<<<<<");
+      
+      if (req.isSSR) return this.next.render(req, res, "/_error", {});
+
+      return res.status(err.status || 404).json({message: err.message || "Unkonwnofe error"});
     })
   }
 }

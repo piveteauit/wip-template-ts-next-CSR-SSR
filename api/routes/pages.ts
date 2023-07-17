@@ -1,5 +1,6 @@
 import data from "../data/integer_memory_store"
 import { controllers } from "../controllers"
+import NotFoundError from "../../shared/errors/NotFoundError"
 
 class Pages {
   express: any
@@ -8,6 +9,10 @@ class Pages {
   constructor(express: any, next: any) {
     this.express = express
     this.next = next
+    this.express.use((req, res, next) => {
+      req.isSSR = true;
+      next();
+    })
   }
 
   init() {
@@ -33,6 +38,20 @@ class Pages {
       }
       return this.next.render(req, res, `/preload_data`)
     })
+
+
+    this.express.get("/preload_data/:id", (req: any, res: any) => {
+      console.log("vale --", data.value)
+      
+      if (Number(req.params.id) > 10) throw new NotFoundError("Preloaded data");
+
+      res.pageParams = {
+        value: data.value,
+      }
+
+      return this.next.render(req, res, `/preload_data`)
+    })
+
 
     /* Special-purpose routing example */
     this.express.get("/large_or_small/:special_value", (req: any, res: any) => {

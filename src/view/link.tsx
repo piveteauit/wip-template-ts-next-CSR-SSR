@@ -1,6 +1,6 @@
 import NextLink from "next/link"
 
-const ssr = ["/users", "/preload_data"]
+const ssr = ["/users", "/preload_data", "/admin/users"]
 
 const isSSR = ({ href }) => ssr.includes(href)
 
